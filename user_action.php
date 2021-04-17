@@ -448,5 +448,3 @@ function make_avatar($character)
     imagedestroy($image);
     return $path;
 }
-
-?>

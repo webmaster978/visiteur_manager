@@ -186,9 +186,7 @@ a {
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
 
-        </div>
 
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
             <div class="card card0 border-0">
@@ -221,27 +219,28 @@ a {
                                 <div class="line"></div> <small class="or text-center">Or</small>
                                 <div class="line"></div>
                             </div>
-
-                            <form method="post" id="teacher_login_form" autocomplete="off">
+                            <span id="error"></span>
+                            <form method="post" id="login_form" autocomplete="off">
                                 <div class="form-group">
                                     <label>Votre adresse mail</label>
-                                    <input type="text" name="teacher_emailid" id="teacher_emailid" class="form-control"
-                                        required />
+                                    <input type="text" name="user_email" id="user_email" class="form-control" required
+                                        data-parsley-type="email" data-parsley-trigger="keyup" />
                                     <span id="error_teacher_emailid" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label>Votre mot de passe </label>
-                                    <input type="password" name="teacher_password" id="teacher_password"
-                                        class="form-control" required />
+                                    <input type="password" name="user_password" id="user_password" class="form-control"
+                                        required data-parsley-trigger="keyup" />
                                     <span id="error_teacher_password" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="teacher_login" id="teacher_login" class="btn btn-info"
+                                    <input type="submit" name="login" id="login_button" class="btn btn-primary"
                                         value="Se connecter" />
                                 </div>
                             </form>
                             <div>
-                                <h4 class="text text-info" style="text-align: center;">Une solution pour la presence
+                                <h4 class="text text-info" style="text-align: center;"> Une solution pour vos
+                                    visiteurs
                                 </h4>
                             </div>
                         </div>
@@ -254,7 +253,8 @@ a {
                         <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span>
                             <span class="fa fa-google-plus mr-4 text-sm"></span> <span
                                 class="fa fa-linkedin mr-4 text-sm"></span> <span
-                                class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span> </div>
+                                class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -270,41 +270,8 @@ a {
 </div>
 
 
-<div class="container">
-    <h3 align="center">Visitor Management System</h3>
-    <br />
 
-    <div class="row">
-        <div class="col-md-3">&nbsp;</div>
-        <div class="col-md-6">
-            <span id="error"></span>
-            <div class="card">
-                <div class="card-header">Login</div>
-                <div class="card-body">
-                    <form method="post" id="login_form">
-                        <div class="form-group">
-                            <label>Enter Email Address</label>
-                            <input type="text" name="user_email" id="user_email" class="form-control" required
-                                data-parsley-type="email" data-parsley-trigger="keyup" />
-                        </div>
-                        <div class="form-group">
-                            <label>Enter password</label>
-                            <input type="password" name="user_password" id="user_password" class="form-control" required
-                                data-parsley-trigger="keyup" />
-                        </div>
-                        <div class="form-group text-center">
-                            <input type="submit" name="login" id="login_button" class="btn btn-primary" value="Login" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <br />
-            <br />
-        </div>
-    </div>
-</div>
-<br />
-<br />
+
 </body>
 
 </html>
@@ -324,7 +291,7 @@ $(document).ready(function() {
                 dataType: 'json',
                 beforeSend: function() {
                     $('#login_button').attr('disabled', 'disabled');
-                    $('#login_button').val('wait...');
+                    $('#login_button').val('En cours ...');
                 },
                 success: function(data) {
                     $('#login_button').attr('disabled', false);
@@ -333,7 +300,7 @@ $(document).ready(function() {
                         $('#login_button').val('Login');
                     } else {
                         window.location.href =
-                            "<?php echo $visitor->base_url; ?>dashboard.php";
+                            "dashboard.php";
                     }
                 }
             })

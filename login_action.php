@@ -6,8 +6,7 @@ include('vms.php');
 
 $visitor = new vms();
 
-if($_POST["user_email"])
-{
+if ($_POST["user_email"]) {
 	sleep(2);
 	$error = '';
 	$data = array(
@@ -29,33 +28,23 @@ if($_POST["user_email"])
 
 	$total_row = $visitor->row_count();
 
-	if($total_row == 0)
-	{
-		$error = '<div class="alert alert-danger">Wrong Email Address</div>';
-	}
-	else
-	{
+	if ($total_row == 0) {
+		$error = '<div class="alert alert-danger">Address email incorrect</div>';
+	} else {
 		//$result = $statement->fetchAll();
 
 		$result = $visitor->statement_result();
 
-		foreach($result as $row)
-		{
-			if($row["admin_status"] == 'Enable')
-			{
-				if(password_verify($_POST["user_password"], $row["admin_password"]))
-				{
+		foreach ($result as $row) {
+			if ($row["admin_status"] == 'Enable') {
+				if (password_verify($_POST["user_password"], $row["admin_password"])) {
 					$_SESSION['admin_id'] = $row['admin_id'];
 					$_SESSION['admin_type'] = $row['admin_type'];
+				} else {
+					$error = '<div class="alert alert-danger">Mot de passe incorrect</div>';
 				}
-				else
-				{
-					$error = '<div class="alert alert-danger">Wrong Password</div>';
-				}
-			}
-			else
-			{
-				$error = '<div class="alert alert-danger">Sorry, Your account has been disable, contact Admin</div>';
+			} else {
+				$error = '<div class="alert alert-danger">Desoler votre compte est desactiver, contacter votre admin</div>';
 			}
 		}
 	}
@@ -66,5 +55,3 @@ if($_POST["user_email"])
 
 	echo json_encode($output);
 }
-
-?>

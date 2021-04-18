@@ -7,7 +7,7 @@ include('vms.php');
 $visitor = new vms();
 
 if (!$visitor->is_login()) {
-	header("location:" . $visitor->base_url . "");
+    header("location:" . $visitor->base_url . "");
 }
 
 include('header.php');

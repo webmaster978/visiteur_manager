@@ -180,7 +180,7 @@ include('sidebar.php');
                             <div class="mt-3">
                                 <h4 id="admin_name"></h4>
                                 <p class="text-secondary mb-1"><?php echo $row["admin_email"];  ?></p>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                <p class="text-muted font-size-sm"><?php echo $row["admin_contact_no"];  ?></p>
 
                             </div>
                         </div>

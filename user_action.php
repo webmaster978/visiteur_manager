@@ -106,7 +106,7 @@ if (isset($_POST["action"])) {
 		$visitor->execute($data);
 
 		if ($visitor->row_count() > 0) {
-			$error = '<div class="alert alert-danger">User Email Already Exists</div>';
+			$error = '<div class="alert alert-danger">Addresse mail existe deja</div>';
 		} else {
 			$user_image = '';
 			if ($_FILES["user_image"]["name"] != '') {
@@ -133,7 +133,7 @@ if (isset($_POST["action"])) {
 
 			$visitor->execute($data);
 
-			$success = '<div class="alert alert-success">User Added</div>';
+			$success = '<div class="alert alert-success">Utilisateur ajoutete</div>';
 		}
 
 		$output = array(
@@ -183,7 +183,7 @@ if (isset($_POST["action"])) {
 		$visitor->execute($data);
 
 		if ($visitor->row_count() > 0) {
-			$error = '<div class="alert alert-danger">User Email Already Exists</div>';
+			$error = '<div class="alert alert-danger">Email existe deja</div>';
 		} else {
 			$user_image = $_POST["hidden_user_image"];
 			if ($_FILES["user_image"]["name"] != '') {
@@ -238,7 +238,7 @@ if (isset($_POST["action"])) {
 				$visitor->execute($data);
 			}
 
-			$success = '<div class="alert alert-success">User Details Updated</div>';
+			$success = '<div class="alert alert-success">Donnees actualiser</div>';
 		}
 
 		$output = array(
@@ -262,7 +262,7 @@ if (isset($_POST["action"])) {
 
 		$visitor->execute($data);
 
-		echo '<div class="alert alert-success">User Status change to ' . $_POST['next_status'] . '</div>';
+		echo '<div class="alert alert-success">Statut de l utilisateur changer en ' . $_POST['next_status'] . '</div>';
 	}
 
 	if ($_POST["action"] == 'profile') {
@@ -294,7 +294,7 @@ if (isset($_POST["action"])) {
 		$visitor->execute($data);
 
 		if ($visitor->row_count() > 0) {
-			$error = '<div class="alert alert-danger">User Email Already Exists</div>';
+			$error = '<div class="alert alert-danger">Email existe deja</div>';
 		} else {
 			$user_image = $_POST["hidden_user_image"];
 			if ($_FILES["user_image"]["name"] != '') {
@@ -327,7 +327,7 @@ if (isset($_POST["action"])) {
 
 			$visitor->execute($data);
 
-			$success = '<div class="alert alert-success">User Details Updated</div>';
+			$success = '<div class="alert alert-success">Donnees actualiser</div>';
 		}
 
 		$output = array(

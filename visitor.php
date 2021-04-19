@@ -7,7 +7,7 @@ include('vms.php');
 $visitor = new vms();
 
 if (!$visitor->is_login()) {
-	header("location:" . $visitor->base_url . "");
+    header("location:" . $visitor->base_url . "");
 }
 
 include('header.php');
@@ -79,10 +79,10 @@ $(document).ready(function() {
                             <th>Sortie</th>
                             <th>Status</th>
                             <?php
-							if ($visitor->is_master_user()) {
-								echo '<th>Enter By</th>';
-							}
-							?>
+                            if ($visitor->is_master_user()) {
+                                echo '<th>Enter By</th>';
+                            }
+                            ?>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -299,14 +299,14 @@ $(document).ready(function() {
             },
             "columnDefs": [{
                 <?php
-					if ($visitor->is_master_user()) {
-					?> "targets": [7],
+                    if ($visitor->is_master_user()) {
+                    ?> "targets": [7],
                 <?php
-					} else {
-					?> "targets": [6],
+                    } else {
+                    ?> "targets": [6],
                 <?php
-					}
-					?> "orderable": false,
+                    }
+                    ?> "orderable": false,
             }, ],
         });
     }
@@ -314,7 +314,7 @@ $(document).ready(function() {
     $('#add_visitor').click(function() {
         $('#visitor_form')[0].reset();
         $('#visitor_form').parsley().reset();
-        $('#modal_title').text('Add Visitor');
+        $('#modal_title').text('Nouveau visiteur');
         $('#action').val('Add');
         $('#submit_button').val('Add');
         $('#visitorModal').modal('show');
@@ -341,7 +341,7 @@ $(document).ready(function() {
                 data: $(this).serialize(),
                 beforeSend: function() {
                     $('#submit_button').attr('disabled', 'disabled');
-                    $('#submit_button').val('wait...');
+                    $('#submit_button').val('patienter ...');
                 },
                 success: function(data) {
                     $('#submit_button').attr('disabled', false);
@@ -386,7 +386,7 @@ $(document).ready(function() {
                 $('#visitor_meet_person_name').val(data.visitor_meet_person_name);
                 $('#visitor_reason_to_meet').val(data.visitor_reason_to_meet);
 
-                $('#modal_title').text('Edit Data');
+                $('#modal_title').text('modofier les donnees');
                 $('#action').val('Edit');
                 $('#submit_button').val('Edit');
                 $('#visitorModal').modal('show');

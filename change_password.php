@@ -7,7 +7,7 @@ include('vms.php');
 $visitor = new vms();
 
 if (!$visitor->is_login()) {
-	header("location:" . $visitor->base_url . "");
+    header("location:" . $visitor->base_url . "");
 }
 
 include('header.php');
@@ -22,7 +22,7 @@ include('sidebar.php');
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <h2>Change Password</h2>
+                    <h2>Changer le mot de passe</h2>
                 </div>
                 <div class="col text-right">
                 </div>
@@ -34,7 +34,7 @@ include('sidebar.php');
                 <form method="post" id="user_form">
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-4 text-right">Current Password <span
+                            <label class="col-md-4 text-right">Ancien mot de passe <span
                                     class="text-danger">*</span></label>
                             <div class="col-md-8">
                                 <input type="password" name="current_password" id="current_password"
@@ -45,7 +45,8 @@ include('sidebar.php');
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-4 text-right">New Password <span class="text-danger">*</span></label>
+                            <label class="col-md-4 text-right">Nouveau mot de passe <span
+                                    class="text-danger">*</span></label>
                             <div class="col-md-8">
                                 <input type="password" name="new_password" id="new_password" class="form-control"
                                     required data-parsley-minlength="6" data-parsley-maxlength="16"
@@ -55,7 +56,7 @@ include('sidebar.php');
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-4 text-right">Re-enter Password <span
+                            <label class="col-md-4 text-right">Confirmer le nouveau mot de passe <span
                                     class="text-danger">*</span></label>
                             <div class="col-md-8">
                                 <input type="password" name="re_enter_new_password" id="re_enter_new_password"
@@ -68,7 +69,7 @@ include('sidebar.php');
                     <div class="form-group text-center">
                         <input type="hidden" name="action" value="change_password" />
                         <button type="submit" name="submit" id="submit_button" class="btn btn-success"><i
-                                class="fas fa-lock"></i> Change</button>
+                                class="fas fa-lock"></i> Modifier</button>
                     </div>
                 </form>
             </div>
@@ -100,7 +101,7 @@ $(document).ready(function() {
                 dataType: "JSON",
                 beforeSend: function() {
                     $('#submit_button').attr('disabled', 'disabled');
-                    $('#submit_button').html('wait...');
+                    $('#submit_button').html('Patitienter...');
                 },
                 success: function(data) {
                     $('#submit_button').attr('disabled', false);

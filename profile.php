@@ -7,7 +7,7 @@ include('vms.php');
 $visitor = new vms();
 
 if (!$visitor->is_login()) {
-	header("location:" . $visitor->base_url . "");
+    header("location:" . $visitor->base_url . "");
 }
 
 $visitor->query = "
@@ -98,8 +98,8 @@ include('sidebar.php');
             <div class="col-md-6">
                 <form method="post" id="user_form" enctype="multipart/form-data">
                     <?php
-					foreach ($result as $row) {
-					?>
+                    foreach ($result as $row) {
+                    ?>
                     <div class="form-group">
                         <div class="row">
                             <label class="col-md-4 text-right">User Name <span class="text-danger">*</span></label>
@@ -155,8 +155,8 @@ include('sidebar.php');
                                 class="far fa-save"></i> Save</button>
                     </div>
                     <?php
-					}
-					?>
+                    }
+                    ?>
                 </form>
             </div>
             <div class="col-md-3">&nbsp;</div>

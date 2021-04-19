@@ -6,7 +6,7 @@
         <div class="col-10">
             <!-- toggler -->
             <a data-toggle="collapse" href="#" data-target=".collapse" role="button">
-                <h3 class="mt-2 mb-2 text-white">Visitor Management System</h3>
+                <h3 class="mt-2 mb-2 text-white">Visiteur manager</h3>
             </a>
         </div>
     </div>
@@ -16,33 +16,33 @@
         <div class="col-sm-2 collapse show sidebar bg-dark px-0 position-fixed">
             <ul class="nav flex-column flex-nowrap pt-2 vh-100" id="sidebar">
                 <?php
-				$page_name = basename($_SERVER['PHP_SELF']);
-				$dashboard_active = 'inactive_class';
-				$user_active = 'inactive_class';
-				$department_active = 'inactive_class';
-				$visitor_active = 'inactive_class';
-				$profile_active = 'inactive_class';
-				$change_password_active = 'inactive_class';
+                $page_name = basename($_SERVER['PHP_SELF']);
+                $dashboard_active = 'inactive_class';
+                $user_active = 'inactive_class';
+                $department_active = 'inactive_class';
+                $visitor_active = 'inactive_class';
+                $profile_active = 'inactive_class';
+                $change_password_active = 'inactive_class';
 
-				if ($page_name == 'dashboard.php') {
-					$dashboard_active = 'active_class';
-				}
-				if ($page_name == 'user.php') {
-					$user_active = 'active_class';
-				}
-				if ($page_name == 'department.php') {
-					$department_active = 'active_class';
-				}
-				if ($page_name == 'visitor.php') {
-					$visitor_active = 'active_class';
-				}
-				if ($page_name == 'profile.php') {
-					$profile_active = 'active_class';
-				}
-				if ($page_name == 'change_password.php') {
-					$change_password_active = 'active_class';
-				}
-				?>
+                if ($page_name == 'dashboard.php') {
+                    $dashboard_active = 'active_class';
+                }
+                if ($page_name == 'user.php') {
+                    $user_active = 'active_class';
+                }
+                if ($page_name == 'department.php') {
+                    $department_active = 'active_class';
+                }
+                if ($page_name == 'visitor.php') {
+                    $visitor_active = 'active_class';
+                }
+                if ($page_name == 'profile.php') {
+                    $profile_active = 'active_class';
+                }
+                if ($page_name == 'change_password.php') {
+                    $change_password_active = 'active_class';
+                }
+                ?>
 
 
                 <li class="nav-item">
@@ -52,8 +52,8 @@
 
                 <?php
 
-				if ($visitor->is_master_user()) {
-				?>
+                if ($visitor->is_master_user()) {
+                ?>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $user_active; ?>" href="user.php"><span
                             class="ml-2 d-none d-sm-inline"><i class="fas fa-users"></i> Utilisateurs</span></a>
@@ -63,9 +63,9 @@
                             class="ml-2 d-none d-sm-inline"><i class="far fa-building"></i> Department</span></a>
                 </li>
                 <?php
-				}
+                }
 
-				?>
+                ?>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $visitor_active; ?>" href="visitor.php"><span
                             class="ml-2 d-none d-sm-inline"><i

@@ -80,7 +80,7 @@ $(document).ready(function() {
                             <th>Status</th>
                             <?php
                             if ($visitor->is_master_user()) {
-                                echo '<th>Enter By</th>';
+                                echo '<th>Ajouter par</th>';
                             }
                             ?>
                             <th>Action</th>

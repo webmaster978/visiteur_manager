@@ -365,9 +365,9 @@ if (isset($_POST["action"])) {
 
 				$visitor->execute($data);
 
-				$success = '<div class="alert alert-success">Password Change Successfully</div>';
+				$success = '<div class="alert alert-success">Mot de passe modifier avec success</div>';
 			} else {
-				$error = '<div class="alert alert-danger">You have enter wrong current password</div>';
+				$error = '<div class="alert alert-danger">Ancien mot de passe incorect</div>';
 			}
 		}
 		$output = array(

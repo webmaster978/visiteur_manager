@@ -19,8 +19,14 @@ include('sidebar.php');
 
 
 
+
+
+
 <div class="col-sm-10 offset-sm-2 py-4">
+
+
     <div class="row">
+
         <div class="col-sm-3">
             <div class="card text-white bg-success mb-3">
                 <div class="card-header text-center">
@@ -73,6 +79,9 @@ include('sidebar.php');
 
 </div>
 </div>
+
+
+
 
 </body>
 

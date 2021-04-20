@@ -5,7 +5,7 @@ include('vms.php');
 $visitor = new vms();
 
 if ($visitor->is_login()) {
-	header("location:" . $visitor->base_url . "dashboard.php");
+    header("location:" . "dashboard.php");
 }
 
 include('header.php');
@@ -248,8 +248,9 @@ a {
                 </div>
 
                 <div class="bg-blue py-4">
-                    <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; <?php $today = new DateTime('today');
-																								echo $today->format('2020 - Y'), PHP_EOL; ?>. All rights reserved by joel jt.</small>
+                    <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy;
+                            <?php $today = new DateTime('today');
+                            echo $today->format('2020 - Y'), PHP_EOL; ?>. All rights reserved by joel jt.</small>
                         <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span>
                             <span class="fa fa-google-plus mr-4 text-sm"></span> <span
                                 class="fa fa-linkedin mr-4 text-sm"></span> <span

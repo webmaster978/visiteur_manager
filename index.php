@@ -16,7 +16,7 @@ include('header.php');
 body {
     color: #000;
     overflow-x: hidden;
-    height: 100%;
+
     background-color: #B0BEC5;
     background-repeat: no-repeat
 }

@@ -4,7 +4,7 @@
 
 class vms
 {
-	public $base_url = 'http://localhost/tutorial/vms/';
+	public $base_url = 'http://localhost/visitor_management';
 	public $connect;
 	public $query;
 	public $statement;
@@ -18,14 +18,11 @@ class vms
 	function execute($data = null)
 	{
 		$this->statement = $this->connect->prepare($this->query);
-		if($data)
-		{
+		if ($data) {
 			$this->statement->execute($data);
-		}
-		else
-		{
+		} else {
 			$this->statement->execute();
-		}		
+		}
 	}
 
 	function row_count()
@@ -45,8 +42,7 @@ class vms
 
 	function is_login()
 	{
-		if(isset($_SESSION['admin_id']))
-		{
+		if (isset($_SESSION['admin_id'])) {
 			return true;
 		}
 		return false;
@@ -54,10 +50,8 @@ class vms
 
 	function is_master_user()
 	{
-		if(isset($_SESSION['admin_type']))
-		{
-			if($_SESSION["admin_type"] == 'Master')
-			{
+		if (isset($_SESSION['admin_type'])) {
+			if ($_SESSION["admin_type"] == 'Master') {
 				return true;
 			}
 			return false;
@@ -67,10 +61,10 @@ class vms
 
 	function clean_input($string)
 	{
-	  	$string = trim($string);
-	  	$string = stripslashes($string);
-	  	$string = htmlspecialchars($string);
-	  	return $string;
+		$string = trim($string);
+		$string = stripslashes($string);
+		$string = htmlspecialchars($string);
+		return $string;
 	}
 
 	function get_datetime()
@@ -86,9 +80,8 @@ class vms
 		";
 		$result = $this->get_result();
 		$output = '';
-		foreach($result as $row)
-		{
-			$output .= '<option value="'.$row["department_name"].'" data-person="'.$row["department_contact_person"].'">'.$row["department_name"].'</option>';
+		foreach ($result as $row) {
+			$output .= '<option value="' . $row["department_name"] . '" data-person="' . $row["department_contact_person"] . '">' . $row["department_name"] . '</option>';
 		}
 		return $output;
 	}
@@ -97,13 +90,12 @@ class vms
 	{
 		$this->query = "
 		SELECT admin_profile FROM admin_table 
-		WHERE admin_id = '".$_SESSION["admin_id"]."'
+		WHERE admin_id = '" . $_SESSION["admin_id"] . "'
 		";
 
 		$result = $this->get_result();
 
-		foreach($result as $row)
-		{
+		foreach ($result as $row) {
 			return $row['admin_profile'];
 		}
 	}
@@ -115,9 +107,8 @@ class vms
 		WHERE DATE(visitor_enter_time) = DATE(NOW())
 		";
 
-		if(!$this->is_master_user())
-		{
-			$this->query .= " AND visitor_enter_by ='".$_SESSION["admin_id"]."'";
+		if (!$this->is_master_user()) {
+			$this->query .= " AND visitor_enter_by ='" . $_SESSION["admin_id"] . "'";
 		}
 
 		$this->execute();
@@ -130,9 +121,8 @@ class vms
 		SELECT * FROM visitor_table 
 		WHERE DATE(visitor_enter_time) = DATE(NOW()) - INTERVAL 1 DAY
 		";
-		if(!$this->is_master_user())
-		{
-			$this->query .= " AND visitor_enter_by ='".$_SESSION["admin_id"]."'";
+		if (!$this->is_master_user()) {
+			$this->query .= " AND visitor_enter_by ='" . $_SESSION["admin_id"] . "'";
 		}
 		$this->execute();
 		return $this->row_count();
@@ -144,9 +134,8 @@ class vms
 		SELECT * FROM visitor_table 
 		WHERE DATE(visitor_enter_time) >= DATE(NOW()) - INTERVAL 7 DAY
 		";
-		if(!$this->is_master_user())
-		{
-			$this->query .= " AND visitor_enter_by ='".$_SESSION["admin_id"]."'";
+		if (!$this->is_master_user()) {
+			$this->query .= " AND visitor_enter_by ='" . $_SESSION["admin_id"] . "'";
 		}
 		$this->execute();
 		return $this->row_count();
@@ -157,12 +146,10 @@ class vms
 		$this->query = "
 		SELECT * FROM visitor_table 
 		";
-		if(!$this->is_master_user())
-		{
-			$this->query .= " WHERE visitor_enter_by ='".$_SESSION["admin_id"]."'";
+		if (!$this->is_master_user()) {
+			$this->query .= " WHERE visitor_enter_by ='" . $_SESSION["admin_id"] . "'";
 		}
 		$this->execute();
 		return $this->row_count();
 	}
-
 }

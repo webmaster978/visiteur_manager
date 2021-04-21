@@ -60,7 +60,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $department_active; ?>" href="department.php"><span
-                            class="ml-2 d-none d-sm-inline"><i class="far fa-building"></i> Department</span></a>
+                            class="ml-2 d-none d-sm-inline"><i class="far fa-building"></i> Departement</span></a>
                 </li>
                 <?php
                 }

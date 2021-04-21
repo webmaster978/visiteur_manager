@@ -275,7 +275,7 @@ $(document).ready(function() {
                 dataType: "JSON",
                 beforeSend: function() {
                     $('#submit_button').attr('disabled', 'disabled');
-                    $('#submit_button').html('wait...');
+                    $('#submit_button').html('Patientez...');
                 },
                 success: function(data) {
                     $('#submit_button').attr('disabled', false);

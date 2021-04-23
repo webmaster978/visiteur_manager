@@ -6,10 +6,8 @@ include('vms.php');
 
 $visitor = new vms();
 
-if(isset($_POST["action"]))
-{
-	if($_POST["action"] == 'fetch')
-	{
+if (isset($_POST["action"])) {
+	if ($_POST["action"] == 'fetch') {
 		$order_column = array('department_name', 'department_contact_person');
 
 		$output = array();
@@ -19,25 +17,20 @@ if(isset($_POST["action"]))
 
 		$search_query = '';
 
-		if(isset($_POST["search"]["value"]))
-		{
-			$search_query .= 'WHERE department_name LIKE "%'.$_POST["search"]["value"].'%" ';
-			$search_query .= 'OR department_contact_person LIKE "%'.$_POST["search"]["value"].'%" ';
+		if (isset($_POST["search"]["value"])) {
+			$search_query .= 'WHERE department_name LIKE "%' . $_POST["search"]["value"] . '%" ';
+			$search_query .= 'OR department_contact_person LIKE "%' . $_POST["search"]["value"] . '%" ';
 		}
 
-		if(isset($_POST["order"]))
-		{
-			$order_query = 'ORDER BY '.$order_column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' ';
-		}
-		else
-		{
+		if (isset($_POST["order"])) {
+			$order_query = 'ORDER BY ' . $order_column[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
+		} else {
 			$order_query = 'ORDER BY department_id DESC ';
 		}
 
 		$limit_query = '';
 
-		if($_POST["length"] != -1)
-		{
+		if ($_POST["length"] != -1) {
 			$limit_query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
 		}
 
@@ -59,16 +52,15 @@ if(isset($_POST["action"]))
 
 		$data = array();
 
-		foreach($result as $row)
-		{
+		foreach ($result as $row) {
 			$sub_array = array();
 			$sub_array[] = html_entity_decode($row["department_name"]);
 			$sub_array[] = html_entity_decode($row["department_contact_person"]);
 			$sub_array[] = '
 			<div align="center">
-			<button type="button" name="edit_button" class="btn btn-warning btn-sm edit_button" data-id="'.$row["department_id"].'"><i class="fas fa-edit"></i></button>
+			<button type="button" name="edit_button" class="btn btn-warning btn-sm edit_button" data-id="' . $row["department_id"] . '"><i class="fas fa-edit"></i></button>
 			&nbsp;
-			<button type="button" name="delete_button" class="btn btn-danger btn-sm delete_button" data-id="'.$row["department_id"].'"><i class="fas fa-times"></i></button>
+			<button type="button" name="delete_button" class="btn btn-danger btn-sm delete_button" data-id="' . $row["department_id"] . '"><i class="fas fa-times"></i></button>
 			</div>
 			';
 			$data[] = $sub_array;
@@ -80,13 +72,11 @@ if(isset($_POST["action"]))
 			"recordsFiltered" 	=> 	$filtered_rows,
 			"data"    			=> 	$data
 		);
-			
-		echo json_encode($output);
 
+		echo json_encode($output);
 	}
 
-	if($_POST["action"] == 'Add')
-	{
+	if ($_POST["action"] == 'Add') {
 		$error = '';
 
 		$success = '';
@@ -102,12 +92,9 @@ if(isset($_POST["action"]))
 
 		$visitor->execute($data);
 
-		if($visitor->row_count() > 0)
-		{
+		if ($visitor->row_count() > 0) {
 			$error = '<div class="alert alert-danger">Department Already Exists</div>';
-		}
-		else
-		{
+		} else {
 			$department_contact_person = implode(", ", $_POST["department_contact_person"]);
 
 			$data = array(
@@ -133,22 +120,19 @@ if(isset($_POST["action"]))
 		);
 
 		echo json_encode($output);
-
 	}
 
-	if($_POST["action"] == 'fetch_single')
-	{
+	if ($_POST["action"] == 'fetch_single') {
 		$visitor->query = "
 		SELECT * FROM department_table 
-		WHERE department_id = '".$_POST["department_id"]."'
+		WHERE department_id = '" . $_POST["department_id"] . "'
 		";
 
 		$result = $visitor->get_result();
 
 		$data = array();
 
-		foreach($result as $row)
-		{
+		foreach ($result as $row) {
 			$data['department_name'] = $row['department_name'];
 			$data['department_contact_person'] = $row['department_contact_person'];
 		}
@@ -156,8 +140,7 @@ if(isset($_POST["action"]))
 		echo json_encode($data);
 	}
 
-	if($_POST["action"] == 'Edit')
-	{
+	if ($_POST["action"] == 'Edit') {
 		$error = '';
 
 		$success = '';
@@ -175,12 +158,9 @@ if(isset($_POST["action"]))
 
 		$visitor->execute($data);
 
-		if($visitor->row_count() > 0)
-		{
+		if ($visitor->row_count() > 0) {
 			$error = '<div class="alert alert-danger">Department Already Exists</div>';
-		}
-		else
-		{
+		} else {
 			$department_contact_person = implode(", ", $_POST["department_contact_person"]);
 
 			$data = array(
@@ -192,12 +172,12 @@ if(isset($_POST["action"]))
 			UPDATE department_table 
 			SET department_name = :department_name, 
 			department_contact_person = :department_contact_person  
-			WHERE department_id = '".$_POST['hidden_id']."'
+			WHERE department_id = '" . $_POST['hidden_id'] . "'
 			";
 
 			$visitor->execute($data);
 
-			$success = '<div class="alert alert-success">Department Updated</div>';
+			$success = '<div class="alert alert-success">Departement Modifier</div>';
 		}
 
 		$output = array(
@@ -206,20 +186,16 @@ if(isset($_POST["action"]))
 		);
 
 		echo json_encode($output);
-
 	}
 
-	if($_POST["action"] == 'delete')
-	{
+	if ($_POST["action"] == 'delete') {
 		$visitor->query = "
 		DELETE FROM department_table 
-		WHERE department_id = '".$_POST["id"]."'
+		WHERE department_id = '" . $_POST["id"] . "'
 		";
 
 		$visitor->execute();
 
-		echo '<div class="alert alert-success">Department Deleted</div>';
+		echo '<div class="alert alert-success">Departement supprimer</div>';
 	}
 }
-
-?>

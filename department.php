@@ -26,7 +26,7 @@ include('sidebar.php');
         <div class="card-header">
             <div class="row">
                 <div class="col">
-                    <h2>Gestion des departements</h2>
+                    <h2>Liste des departement</h2>
                 </div>
                 <div class="col text-right">
                     <button type="button" name="add_department" id="add_department" class="btn btn-success btn-sm"><i
@@ -39,8 +39,8 @@ include('sidebar.php');
                 <table class="table table-striped table-bordered" id="department_table">
                     <thead>
                         <tr>
-                            <th>Nom du departement</th>
-                            <th>Liste des personnes</th>
+                            <th>Nom du department</th>
+                            <th>Personnes du departement</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -61,7 +61,7 @@ include('sidebar.php');
         <form method="post" id="deparment_form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="modal_title">Ajouter une donne</h4>
+                    <h4 class="modal-title" id="modal_title">Ajouter un departement</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -93,9 +93,9 @@ include('sidebar.php');
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="hidden_id" id="hidden_id" />
-                    <input type="hidden" name="action" id="action" value="Ajouter" />
+                    <input type="hidden" name="action" id="action" value="Add" />
                     <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Ajouter" />
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Ferner</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </form>
@@ -128,9 +128,9 @@ $(document).ready(function() {
 
         $('#deparment_form').parsley().reset();
 
-        $('#modal_title').text('Ajouter un departement');
+        $('#modal_title').text('Add Data');
 
-        $('#action').val('Ajouter');
+        $('#action').val('Add');
 
         $('#submit_button').val('Ajouter');
 
@@ -257,9 +257,9 @@ $(document).ready(function() {
 
                 $('#append_person').html(html);
 
-                $('#modal_title').text('Modifier les donnees');
+                $('#modal_title').text('Ajouter');
 
-                $('#action').val('Modifier');
+                $('#action').val('Edit');
 
                 $('#submit_button').val('Modifier');
 
@@ -277,7 +277,7 @@ $(document).ready(function() {
 
         var id = $(this).data('id');
 
-        if (confirm("Etes vous sur de vouloir modifier?")) {
+        if (confirm("Etes vous sur de vouloir supprimez?")) {
 
             $.ajax({
 

@@ -150,7 +150,7 @@ if (isset($_POST["action"])) {
 
 		$visitor->execute($data);
 
-		echo '<div class="alert alert-success">Department Added</div>';
+		echo '<div class="alert alert-success">Visiteur inserer avec success</div>';
 	}
 
 	if ($_POST["action"] == 'fetch_single') {
@@ -202,7 +202,7 @@ if (isset($_POST["action"])) {
 
 		$visitor->execute($data);
 
-		echo '<div class="alert alert-success">Visitor Details Updated</div>';
+		echo '<div class="alert alert-success">Information du visteur modifier avec success</div>';
 	}
 
 	if ($_POST["action"] == 'delete') {
@@ -213,7 +213,7 @@ if (isset($_POST["action"])) {
 
 		$visitor->execute();
 
-		echo '<div class="alert alert-success">Visitor Details Deleted</div>';
+		echo '<div class="alert alert-success">Visiteur supprimer avec success</div>';
 	}
 
 	if ($_POST["action"] == 'update_outing_detail') {
@@ -233,6 +233,6 @@ if (isset($_POST["action"])) {
 
 		$visitor->execute($data);
 
-		echo '<div class="alert alert-success">Visitor Out Details Updated</div>';
+		echo '<div class="alert alert-success">Le visiteur a quitter</div>';
 	}
 }

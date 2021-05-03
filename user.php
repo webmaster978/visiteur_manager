@@ -7,11 +7,11 @@ include('vms.php');
 $visitor = new vms();
 
 if (!$visitor->is_login()) {
-	header("location:" . $visitor->base_url . "");
+    header("location:" . $visitor->base_url . "");
 }
 
 if (!$visitor->is_master_user()) {
-	header("location:" . $visitor->base_url . "dashboard.php");
+    header("location:" . $visitor->base_url . "dashboard.php");
 }
 
 include('header.php');
@@ -20,7 +20,7 @@ include('sidebar.php');
 ?>
 
 
-<div class="col-sm-10 offset-sm-2 py-4">
+<div class="col-sm-12">
     <span id="message"></span>
     <div class="card">
         <div class="card-header">
@@ -52,9 +52,9 @@ include('sidebar.php');
         </div>
     </div>
 </div>
-</div>
-</div>
 
+
+<?php include 'foot.php'; ?>
 </body>
 
 </html>

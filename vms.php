@@ -4,7 +4,7 @@
 
 class vms
 {
-	public $base_url = 'http://localhost/visitor_management';
+	public $base_url = '';
 	public $connect;
 	public $query;
 	public $statement;

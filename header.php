@@ -4,8 +4,15 @@
 <head>
     <title>Visiteur manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/undraw_rocket.svg" type="image/x-icon">
+    <meta name="description"
+        content="Visiteur manager est une apllication qui gere les visites au sein d'une entreprise">
+    <meta name="author" content="joel jt">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/theme.css">
+    <!-- <link rel="stylesheet" href="css/theme.css"> -->
+
+
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
@@ -24,7 +31,7 @@
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
-    <link rel="icon" href="https://i.imgur.com/CXQmsmF.png" type="image/jpg">
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -35,14 +42,30 @@
     <script type="text/javascript" src="js/datatables.min.js"></script>
     <script type="text/javascript" src="parsley/dist/parsley.min.js"></script>
     <link rel="stylesheet" type="text/css" href="parsley/parsley.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
 
     <script type="text/javascript" src="js/bootstrap-datepicker1.js"></script>
     <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
 </head>
 
 
 
-<body>
+<body id="page-top">

@@ -121,7 +121,7 @@ if (isset($_POST["action"])) {
 				':admin_email'		=>	$_POST["admin_email"],
 				':admin_password'	=>	password_hash($_POST["admin_password"], PASSWORD_DEFAULT),
 				':admin_profile'	=>	$user_image,
-				':admin_type'		=>	'User',
+				':admin_type'		=>	'Master',
 				':admin_created_on'	=>	$visitor->get_datetime()
 			);
 

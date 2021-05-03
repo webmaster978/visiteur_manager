@@ -7,11 +7,11 @@ include('vms.php');
 $visitor = new vms();
 
 if (!$visitor->is_login()) {
-	header("location:" . $visitor->base_url . "");
+    header("location:" . $visitor->base_url . "");
 }
 
 if (!$visitor->is_master_user()) {
-	header("location:" . $visitor->base_url . "dashboard.php");
+    header("location:" . $visitor->base_url . "dashboard.php");
 }
 
 include('header.php');
@@ -19,39 +19,47 @@ include('header.php');
 include('sidebar.php');
 ?>
 
+<div class="container-fluid">
 
-<div class="col-sm-10 offset-sm-2 py-4">
-    <span id="message"></span>
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col">
-                    <h2>Liste des departement</h2>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <span id="message"></span>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h2>Liste des departement</h2>
+                        </div>
+                        <div class="col text-right">
+                            <button type="button" name="add_department" id="add_department"
+                                class="btn btn-success btn-sm"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col text-right">
-                    <button type="button" name="add_department" id="add_department" class="btn btn-success btn-sm"><i
-                            class="fas fa-plus"></i></button>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="department_table">
+                            <thead>
+                                <tr>
+                                    <th>Nom du department</th>
+                                    <th>Personnes du departement</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered" id="department_table">
-                    <thead>
-                        <tr>
-                            <th>Nom du department</th>
-                            <th>Personnes du departement</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                </table>
             </div>
         </div>
     </div>
 </div>
-</div>
-</div>
 
+
+
+<?php include 'foot.php'; ?>
 </body>
 
 </html>
@@ -102,6 +110,8 @@ include('sidebar.php');
     </div>
 </div>
 
+
+
 <script>
 $(document).ready(function() {
 
@@ -128,7 +138,7 @@ $(document).ready(function() {
 
         $('#deparment_form').parsley().reset();
 
-        $('#modal_title').text('Add Data');
+        $('#modal_title').text('Ajouter un departement');
 
         $('#action').val('Add');
 

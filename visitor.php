@@ -32,7 +32,7 @@ $(document).ready(function() {
 </script>
 
 
-<div class="col-sm-10 offset-sm-2 py-4">
+<div class="col-sm-12">
     <span id="message"></span>
     <div class="card">
         <div class="card-header">
@@ -91,9 +91,10 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
-</div>
-</div>
 
+
+
+<?php include 'foot.php'; ?>
 </body>
 
 </html>

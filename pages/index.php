@@ -46,6 +46,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Visiteur manager</h1>
                                     </div>
+                                    <span id="error"></span>
                                     <form class="user">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" id=""
@@ -66,11 +67,10 @@
                                             value="Se connecter">
 
                                         <hr>
-                                        <a href="#" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Se connecter avec Google
-                                        </a>
-                                        <a href="#" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Se connecter avec Facebook
+
+                                        <a href="#" class="btn btn-default btn-user btn-block">
+                                            <i class=""><img width="10%;" src="img/up.png" alt=""></i> Se connecter avec
+                                            Updevcom
                                         </a>
                                     </form>
                                     <hr>

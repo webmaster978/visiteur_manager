@@ -1,89 +1,190 @@
-<div class="container-fluid fixed-top bg-dark py-3" style="z-index:1049;">
-    <div class="row">
-        <div class="col-2 collapse show sidebar text-center">
-            <img src="<?php echo $visitor->Get_profile_image(); ?>" class="img-fluid rounded-circle" width="50" />
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="dashboard">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Visiteur
         </div>
-        <div class="col-10">
-            <!-- toggler -->
-            <a data-toggle="collapse" href="#" data-target=".collapse" role="button">
-                <h3 class="mt-2 mb-2 text-white">Visiteur manager</h3>
-            </a>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link" href="visiteur">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Visiteurs</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="departement">
+                <i class="fas fa-fw fa-home"></i>
+                <span>Departement</span></a>
+        </li>
+
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Autres
         </div>
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="row vh-100 flex-nowrap">
-        <div class="col-sm-2 collapse show sidebar bg-dark px-0 position-fixed">
-            <ul class="nav flex-column flex-nowrap pt-2 vh-100" id="sidebar">
-                <?php
-                $page_name = basename($_SERVER['PHP_SELF']);
-                $dashboard_active = 'inactive_class';
-                $user_active = 'inactive_class';
-                $department_active = 'inactive_class';
-                $visitor_active = 'inactive_class';
-                $profile_active = 'inactive_class';
-                $change_password_active = 'inactive_class';
 
-                if ($page_name == 'dashboard.php') {
-                    $dashboard_active = 'active_class';
-                }
-                if ($page_name == 'user.php') {
-                    $user_active = 'active_class';
-                }
-                if ($page_name == 'department.php') {
-                    $department_active = 'active_class';
-                }
-                if ($page_name == 'visitor.php') {
-                    $visitor_active = 'active_class';
-                }
-                if ($page_name == 'profile.php') {
-                    $profile_active = 'active_class';
-                }
-                if ($page_name == 'change_password.php') {
-                    $change_password_active = 'active_class';
-                }
-                ?>
+        <!-- Nav Item - Pages Collapse Menu -->
 
 
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $dashboard_active; ?>" href="dashboard.php"><span
-                            class="ml-2 d-none d-sm-inline"><i class="fas fa-tachometer-alt"></i> Dashboard</span></a>
-                </li>
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="users">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Utilisateurs</span></a>
+        </li>
 
-                <?php
+        <!-- Nav Item - Tables -->
 
-                if ($visitor->is_master_user()) {
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $user_active; ?>" href="user.php"><span
-                            class="ml-2 d-none d-sm-inline"><i class="fas fa-users"></i> Utilisateurs</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $department_active; ?>" href="department.php"><span
-                            class="ml-2 d-none d-sm-inline"><i class="far fa-building"></i> Departement</span></a>
-                </li>
-                <?php
-                }
 
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $visitor_active; ?>" href="visitor.php"><span
-                            class="ml-2 d-none d-sm-inline"><i
-                                class="fas fa-person-booth"></i>&nbsp;&nbsp;Visiteurs</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $profile_active; ?>" href="profile.php"><span
-                            class="ml-2 d-none d-sm-inline"><i
-                                class="far fa-id-badge"></i>&nbsp;&nbsp;Profile</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $change_password_active; ?>" href="change_password.php"><span
-                            class="ml-2 d-none d-sm-inline"><i class="fas fa-key"></i>&nbsp;&nbsp;Mot de
-                            passe</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link inactive_class" href="logout.php"><span class="ml-2 d-none d-sm-inline"><i
-                                class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Deconnexion</span></a>
-                </li>
-            </ul>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
+
+        <!-- Sidebar Message -->
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Search -->
+
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter">3+</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">
+                                Centre d'alerte
+                            </h6>
+
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-warning">
+                                        <i class="fas fa-exclamation-triangle text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 2, 2019</div>
+                                    Spending Alert: We've noticed unusually high spending for your account.
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        </div>
+                    </li>
+
+                    <!-- Nav Item - Messages -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">
+                                Centre de messagerie
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                        alt="">
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                        </div>
+                    </li>
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <img class="img-profile rounded-circle" src="<?php echo $visitor->Get_profile_image(); ?>">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="profile">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Deconnexion
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>

@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteRule ^login$ index.php 
+RewriteRule ^dashboard$ dashboard.php
+RewriteRule ^visiteur$ visitor.php
+RewriteRule ^departement$ department.php
+RewriteRule ^users$ user.php
+RewriteRule ^profile$ profile.php

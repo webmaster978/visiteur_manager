@@ -76,7 +76,7 @@ include('sidebar.php');
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab"
-                                aria-controls="pills-profile" aria-selected="false">Profile</a>
+                                aria-controls="pills-profile" aria-selected="false">Securite</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active show" id="pills-setting-tab" data-toggle="pill"
@@ -178,11 +178,53 @@ include('sidebar.php');
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="mt-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                                    enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-                                    pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi.
-                                    Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
-                                    eleifend ac, enim.</p>
+                                <h4>Modifier le mot de passe</h4>
+                                <span id="message"></span>
+                                <p class="mt-30">
+
+                                <form method="post" id="user_form">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-md-4 text-right">Ancien mot de passe <span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-md-8">
+                                                <input type="password" name="current_password" id="current_password"
+                                                    class="form-control" required data-parsley-minlength="6"
+                                                    data-parsley-maxlength="16" data-parsley-trigger="keyup" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-md-4 text-right">Nouveau mot de passe <span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-md-8">
+                                                <input type="password" name="new_password" id="new_password"
+                                                    class="form-control" required data-parsley-minlength="6"
+                                                    data-parsley-maxlength="16" data-parsley-trigger="keyup" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-md-4 text-right">Confirmer le nouveau mot de passe <span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-md-8">
+                                                <input type="password" name="re_enter_new_password"
+                                                    id="re_enter_new_password" class="form-control" required
+                                                    data-parsley-equalto="#new_password" data-parsley-trigger="keyup" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group text-center">
+                                        <input type="hidden" name="action" value="change_password" />
+                                        <button type="submit" name="submit" id="submit_button"
+                                            class="btn btn-success"><i class="fas fa-lock"></i> Modifier</button>
+                                    </div>
+                                </form>
+
+                                </p>
 
 
 
@@ -206,30 +248,32 @@ include('sidebar.php');
                                             required data-parsley-type="email" data-parsley-maxlength="150"
                                             data-parsley-trigger="keyup" value="<?php echo $row['admin_email']; ?>" />
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="example-password">Password</label>
-                                        <input type="password" value="password" class="form-control"
-                                            name="example-password" id="example-password">
+                                        <label for="example-phone">Contact</label>
+
+                                        <input type="text" name="admin_contact_no" id="admin_contact_no"
+                                            class="form-control" required data-parsley-type="integer"
+                                            data-parsley-minlength="10" data-parsley-maxlength="12"
+                                            data-parsley-trigger="keyup"
+                                            value="<?php echo $row['admin_contact_no']; ?>" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="example-phone">Phone No</label>
-                                        <input type="text" placeholder="123 456 7890" id="example-phone"
-                                            name="example-phone" class="form-control">
+
+
+
+                                        <input type="file" name="user_image" id="user_image" />
+                                        <span id="user_uploaded_image" class="mt-2">
+                                            <img src="<?php echo $row["admin_profile"];  ?>"
+                                                class="img-fluid img-thumbnail" width="200" />
+                                            <input type="hidden" name="hidden_user_image"
+                                                value="<?php echo $row["admin_profile"]; ?>" />
+                                        </span>
+
+
                                     </div>
-                                    <div class="form-group">
-                                        <label for="example-message">Message</label>
-                                        <textarea name="example-message" rows="5" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-country">Select Country</label>
-                                        <select name="example-message" id="example-message" class="form-control">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
-                                    </div>
+
+
                                     <button class="btn btn-success" type="submit">Update Profile</button>
                                 </form>
                             </div>
@@ -386,6 +430,43 @@ $(document).ready(function() {
                 $('#user_image').val('');
                 return false;
             }
+        }
+    });
+
+});
+
+$(document).ready(function() {
+
+    $('#user_form').parsley();
+
+    $('#user_form').on('submit', function() {
+        event.preventDefault();
+        if ($('#user_form').parsley().isValid()) {
+            $.ajax({
+                url: "user_action.php",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('#submit_button').attr('disabled', 'disabled');
+                    $('#submit_button').html('Patitienter...');
+                },
+                success: function(data) {
+                    $('#submit_button').attr('disabled', false);
+                    $('#submit_button').html('<i class="fas fa-lock"></i> Change');
+                    if (data.error != '') {
+                        $('#message').html(data.error);
+                    } else {
+                        $('#user_form')[0].reset();
+                        $('#message').html(data.success);
+                        setTimeout(function() {
+                            $('#message').html('');
+                        }, 5000);
+                    }
+                }
+            })
         }
     });
 

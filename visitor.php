@@ -118,6 +118,7 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="row">
                             <label class="col-md-4 text-right">Adresse mail du visteur</label>

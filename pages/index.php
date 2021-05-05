@@ -1,3 +1,17 @@
+<?php
+
+include('vms.php');
+
+$visitor = new vms();
+
+if ($visitor->is_login()) {
+    header("location:" . "dashboard.php");
+}
+
+include('header.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,14 +61,21 @@
                                         <h1 class="h4 text-gray-900 mb-4">Visiteur manager</h1>
                                     </div>
                                     <span id="error"></span>
-                                    <form class="user">
+                                    <form class="user" id="login_form" autocomplete="off">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id=""
-                                                aria-describedby="emailHelp" placeholder="Adresse mail">
+                                            <input style="text-align:center" type="text" name="user_email"
+                                                id="user_email" class="form-control form-control-user" required
+                                                data-parsley-type="email" placeholder="Adresse mail"
+                                                data-parsley-trigger="keyup" />
+                                            <span id="error_teacher_emailid" class="text-danger"></span>
+
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Mot de passe">
+                                            <input style="text-align:center" type="password" name="user_password"
+                                                id="user_password" class="form-control form-control-user" required
+                                                placeholder="Mot de passe" data-parsley-trigger="keyup" />
+                                            <span id="error_teacher_password" class="text-danger"></span>
+
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -63,8 +84,8 @@
                                                     moi</label>
                                             </div>
                                         </div>
-                                        <input class="btn btn-primary btn-user btn-block" type="submit"
-                                            value="Se connecter">
+                                        <input class="btn btn-primary btn-user btn-block" type="submit" name="login"
+                                            id="login_button">
 
                                         <hr>
 
@@ -99,6 +120,42 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+
+
+    <script>
+    $(document).ready(function() {
+
+        $('#login_form').parsley();
+
+        $('#login_form').on('submit', function(event) {
+            event.preventDefault();
+            if ($('#login_form').parsley().isValid()) {
+                $.ajax({
+                    url: "login_action.php",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $('#login_button').attr('disabled', 'disabled');
+                        $('#login_button').val('En cours ...');
+                    },
+                    success: function(data) {
+                        $('#login_button').attr('disabled', false);
+                        if (data.error != '') {
+                            $('#error').html(data.error);
+                            $('#login_button').val('Login');
+                        } else {
+                            window.location.href =
+                                "dashboard";
+                        }
+                    }
+                })
+            }
+        });
+
+    });
+    </script>
 
 </body>
 

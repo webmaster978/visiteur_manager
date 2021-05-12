@@ -8,7 +8,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">Vis-manager <sup></sup></div>
         </a>
 
         <!-- Divider -->
@@ -35,33 +35,33 @@
                 <i class="fas fa-fw fa-user"></i>
                 <span>Visiteurs</span></a>
         </li>
+
+        <?php
+
+        if ($visitor->is_master_user()) {
+        ?>
         <li class="nav-item">
             <a class="nav-link" href="departement">
                 <i class="fas fa-fw fa-home"></i>
                 <span>Departement</span></a>
         </li>
-
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-
-
-        <!-- Divider -->
         <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Autres
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-
-
-        <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="users">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Utilisateurs</span></a>
         </li>
+
+        <?php
+        }
+
+        ?>
+
+
+
+
+        <!-- Nav Item - Charts -->
+
 
         <!-- Nav Item - Tables -->
 
@@ -107,7 +107,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -123,8 +123,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="small text-gray-500">December 2, 2019</div>
-                                    Spending Alert: We've noticed unusually high spending for your account.
+                                    <div class="small text-gray-500">Juillet, 2021</div>
+                                    Comming soon
                                 </div>
                             </a>
                             <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -137,7 +137,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -147,13 +147,11 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                        alt="">
+                                    <img class="rounded-circle" src="img/up.png" alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                    <div class="text-truncate">Comming soon</div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -167,7 +165,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span
+                                class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $visitor->Get_profile_name(); ?></span>
                             <img class="img-profile rounded-circle" src="<?php echo $visitor->Get_profile_image(); ?>">
                         </a>
                         <!-- Dropdown - User Information -->

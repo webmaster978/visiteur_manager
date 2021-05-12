@@ -152,4 +152,13 @@ class vms
 		$this->execute();
 		return $this->row_count();
 	}
+	function Get_profile_name()
+	{
+		$this->query = "SELECT admin_name FROM admin_table WHERE admin_id = '" . $_SESSION["admin_id"] . "'";
+		$res = $this->get_result();
+
+		foreach ($res as $row) {
+			return $row['admin_name'];
+		}
+	}
 }

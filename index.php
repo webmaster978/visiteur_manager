@@ -23,7 +23,7 @@ include('header.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Visiteur-manager</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@ include('header.php');
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image">
                                 <div class="pt-5">
-                                    <img src="img/undraw_rocket.svg" alt="">
+                                    <img class="col-md-12" src="img/up.png" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">

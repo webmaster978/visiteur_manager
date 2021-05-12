@@ -112,6 +112,7 @@ $(document).ready(function() {
                         <div class="row">
                             <label class="col-md-4 text-right">Nom du visiteur</label>
                             <div class="col-md-8">
+
                                 <input type="text" name="visitor_name" id="visitor_name" class="form-control" required
                                     data-parsley-pattern="/^[a-zA-Z\s]+$/" data-parsley-maxlength="150"
                                     data-parsley-trigger="keyup" />

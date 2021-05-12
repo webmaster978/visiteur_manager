@@ -122,24 +122,36 @@ $(document).ready(function() {
 
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-4 text-right">Adresse mail du visteur</label>
-                            <div class="col-md-8">
-                                <input type="text" name="visitor_email" id="visitor_email" class="form-control" required
-                                    data-parsley-type="email" data-parsley-maxlength="150"
-                                    data-parsley-trigger="keyup" />
+                            <label class="col-md-4 text-right">Contact</label>
+                            <div class="col-md-2">
+                                <select class="form-control" name="" id="">
+                                    <option value="">243</option>
+                                </select>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-md-4 text-right">Numero piece d'identité</label>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <input type="text" name="visitor_mobile_no" id="visitor_mobile_no" class="form-control"
                                     required data-parsley-type="integer" data-parsley-minlength="10"
                                     data-parsley-maxlength="12" data-parsley-trigger="keyup" />
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="col-md-4 text-right">Adresse mail du visteur</label>
+                            <div class="col-md-8">
+                                <div class="md-form">
+                                    <input placeholder="Selected time" type="text" id="input_starttime"
+                                        class="form-control timepicker">
+                                    <label for="input_starttime">Twelve hour clock</label>
+                                </div>
+                                <input type="text" name="visitor_email" id="visitor_email" class="form-control" required
+                                    data-parsley-type="email" data-parsley-maxlength="150"
+                                    data-parsley-trigger="keyup" />
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="row">
                             <label class="col-md-4 text-right">Adresse du visiteur</label>
@@ -184,7 +196,7 @@ $(document).ready(function() {
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="hidden_id" id="hidden_id" />
-                    <input type="hidden" name="action" id="action" value="Add" />
+                    <input type="hidden" name="action" id="action" value="Enregistrer" />
                     <input type="submit" name="submit" id="submit_button" class="btn btn-success" value="Ajouter" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                 </div>
@@ -319,7 +331,7 @@ $(document).ready(function() {
         $('#visitor_form').parsley().reset();
         $('#modal_title').text('Nouveau visiteur');
         $('#action').val('Add');
-        $('#submit_button').val('Add');
+        $('#submit_button').val('Enregistrer');
         $('#visitorModal').modal('show');
     });
 
@@ -500,5 +512,11 @@ $(document).ready(function() {
         }
     });
 
+});
+</script>
+<script>
+$('#input_starttime').pickatime({
+    // 12 or 24 hour
+    twelvehour: true,
 });
 </script>

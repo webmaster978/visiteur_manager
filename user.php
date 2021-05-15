@@ -245,7 +245,7 @@ $(document).ready(function() {
 
                 $('#admin_password').attr('data-parsley-trigger', '');
 
-                $('#modal_title').text('Edit Data');
+                $('#modal_title').text('Modifier');
                 $('#action').val('Edit');
                 $('#submit_button').val('Modifier');
                 $('#userModal').modal('show');

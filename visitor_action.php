@@ -8,7 +8,7 @@ $visitor = new vms();
 
 if (isset($_POST["action"])) {
 	if ($_POST["action"] == 'fetch') {
-		$order_column = array('visitor_table.visitor_name', 'visitor_table.visitor_meet_person_name', 'visitor_table.visitor_department', 'visitor_table.visitor_enter_time', 'visitor_table.visitor_out_time', 'visitor_table.visitor_status', 'admin_table.admin_name');
+		$order_column = array('visitor_table.visitor_name', 'visitor_table.visitor_meet_person_name', 'visitor_table.visitor_department', 'visitor_table.timepicker', 'visitor_table.visitor_out_time', 'visitor_table.visitor_status', 'admin_table.admin_name');
 
 		$output = array();
 
@@ -92,7 +92,7 @@ if (isset($_POST["action"])) {
 			$sub_array[] = html_entity_decode($row["visitor_name"]);
 			$sub_array[] = html_entity_decode($row["visitor_meet_person_name"]);
 			$sub_array[] = $row["visitor_department"];
-			$sub_array[] = $row["visitor_enter_time"];
+			$sub_array[] = $row["timepicker"];
 			$sub_array[] = $row["visitor_out_time"];
 			$status = '';
 			if ($row["visitor_status"] == 'In') {
@@ -129,7 +129,7 @@ if (isset($_POST["action"])) {
 	if ($_POST["action"] == 'Add') {
 		$data = array(
 			':visitor_name'			=>	$visitor->clean_input($_POST["visitor_name"]),
-			':visitor_email'		=>	$_POST["visitor_email"],
+			':timepicker'		=>	$_POST["timepicker"],
 			':visitor_mobile_no'	=>	$_POST["visitor_mobile_no"],
 			':visitor_address'		=>	$visitor->clean_input($_POST["visitor_address"]),
 			':visitor_meet_person_name' =>	$_POST["visitor_meet_person_name"],
@@ -144,8 +144,8 @@ if (isset($_POST["action"])) {
 
 		$visitor->query = "
 		INSERT INTO visitor_table 
-		(visitor_name, visitor_email, visitor_mobile_no, visitor_address, visitor_meet_person_name, visitor_department, visitor_reason_to_meet, visitor_enter_time, visitor_outing_remark, visitor_out_time, visitor_status, visitor_enter_by) 
-		VALUES (:visitor_name, :visitor_email, :visitor_mobile_no, :visitor_address, :visitor_meet_person_name, :visitor_department, :visitor_reason_to_meet, :visitor_enter_time, :visitor_outing_remark, :visitor_out_time, :visitor_status, :visitor_enter_by)
+		(visitor_name, timepicker, visitor_mobile_no, visitor_address, visitor_meet_person_name, visitor_department, visitor_reason_to_meet, visitor_enter_time, visitor_outing_remark, visitor_out_time, visitor_status, visitor_enter_by) 
+		VALUES (:visitor_name, :timepicker, :visitor_mobile_no, :visitor_address, :visitor_meet_person_name, :visitor_department, :visitor_reason_to_meet, :visitor_enter_time, :visitor_outing_remark, :visitor_out_time, :visitor_status, :visitor_enter_by)
 			";
 
 		$visitor->execute($data);
@@ -165,7 +165,7 @@ if (isset($_POST["action"])) {
 
 		foreach ($result as $row) {
 			$data['visitor_name'] = $row['visitor_name'];
-			$data['visitor_email'] = $row['visitor_email'];
+			$data['timepicker'] = $row['timepicker'];
 			$data['visitor_mobile_no'] = $row['visitor_mobile_no'];
 			$data['visitor_address'] = $row['visitor_address'];
 			$data['visitor_meet_person_name'] = $row['visitor_meet_person_name'];
@@ -180,7 +180,7 @@ if (isset($_POST["action"])) {
 	if ($_POST["action"] == 'Edit') {
 		$data = array(
 			':visitor_name'			=>	$visitor->clean_input($_POST["visitor_name"]),
-			':visitor_email'		=>	$_POST["visitor_email"],
+			':timepicker'		=>	$_POST["timepicker"],
 			':visitor_mobile_no'	=>	$_POST["visitor_mobile_no"],
 			':visitor_address'		=>	$visitor->clean_input($_POST["visitor_address"]),
 			':visitor_meet_person_name' =>	$_POST["visitor_meet_person_name"],
@@ -191,7 +191,7 @@ if (isset($_POST["action"])) {
 		$visitor->query = "
 		UPDATE visitor_table 
 		SET visitor_name = :visitor_name, 
-		visitor_email = :visitor_email, 
+		timepicker = :timepicker, 
 		visitor_mobile_no = :visitor_mobile_no, 
 		visitor_address = :visitor_address, 
 		visitor_meet_person_name = :visitor_meet_person_name, 

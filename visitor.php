@@ -122,10 +122,11 @@ include('sidebar.php');
                     </div>
 
                     <div class="form-group">
-                        <div class="row">
+                        <div class="row" id="ttt">
                             <label class="col-md-4 text-right">Heure d'arrivé</label>
                             <div class="col-md-8">
                                 <input id="timepicker" name="timepicker" width="276" />
+                                <input id="timepicker1" name="timepicker" width="276" />
                                 <!-- <input type="text" name="timepicker" id="timepicker" class="form-control" required
                                     data-parsley-type="email" data-parsley-maxlength="150"
                                     data-parsley-trigger="keyup" /> -->
@@ -214,7 +215,7 @@ include('sidebar.php');
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-4 text-right"><b>Numero piece d'identité</b></label>
+                            <label class="col-md-4 text-right"><b>Contact du visiteur</b></label>
                             <div class="col-md-8">
                                 <span id="visitor_mobile_no_detail"></span>
                             </div>
@@ -321,6 +322,7 @@ $(document).ready(function() {
         $('#action').val('Add');
         $('#submit_button').val('Enregistrer');
         $('#visitorModal').modal('show');
+
     });
 
     $(document).on('change', '#visitor_department', function() {
@@ -360,6 +362,8 @@ $(document).ready(function() {
         }
     });
 
+
+
     $(document).on('click', '.edit_button', function() {
         var visitor_id = $(this).data('id');
         $('#visitor_form').parsley().reset();
@@ -377,7 +381,7 @@ $(document).ready(function() {
                 $('#visitor_mobile_no').val(data.visitor_mobile_no);
                 $('#visitor_address').val(data.visitor_address);
                 $('#visitor_department').val(data.visitor_department);
-
+                document.querySelector('#ttt').style.display = 'none';
                 var person = $('#visitor_department').find(':selected').data('person');
                 var person_array = person.split(", ");
                 var html = '<option value="">Selectionner une personne</option>';

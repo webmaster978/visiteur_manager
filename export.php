@@ -65,5 +65,3 @@ foreach($result as $row)
 }
 fclose($file);
 exit;
-
-?>

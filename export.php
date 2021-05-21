@@ -14,30 +14,24 @@ $file = fopen("php://output", "w");
 $header = array("Visitor ID", "Visitor Name", "Visitor Email", "Visitor Mobile No.", "Visitor Address", "Meet Person Department", "Meet Person Name", "Reason for Visit", "Enter Time", "Outing Remark", "Out Time", "Visitor Status", "Enter By");
 fputcsv($file, $header);
 
-if(isset($_GET["from_date"]) && isset($_GET["to_date"]))
-{
+if (isset($_GET["from_date"]) && isset($_GET["to_date"])) {
 	$visitor->query = "
 	SELECT * FROM visitor_table 
 	INNER JOIN admin_table 
 	ON admin_table.admin_id = visitor_table.visitor_enter_by 
-	WHERE DATE(visitor_table.visitor_enter_time) BETWEEN '".$_GET["from_date"]."' AND '".$_GET["to_date"]."' 
+	WHERE DATE(visitor_table.visitor_enter_time) BETWEEN '" . $_GET["from_date"] . "' AND '" . $_GET["to_date"] . "' 
 	";
-	if(!$visitor->is_master_user())
-	{
-		$visitor->query .= ' AND visitor_table.visitor_enter_by = "'.$_SESSION["admin_id"].'" ';
+	if (!$visitor->is_master_user()) {
+		$visitor->query .= ' AND visitor_table.visitor_enter_by = "' . $_SESSION["admin_id"] . '" ';
 	}
-
-}
-else
-{
+} else {
 	$visitor->query = "
 	SELECT * FROM visitor_table 
 	INNER JOIN admin_table 
 	ON admin_table.admin_id = visitor_table.visitor_enter_by 
 	";
-	if(!$visitor->is_master_user())
-	{
-		$visitor->query .= ' WHERE visitor_table.visitor_enter_by = "'.$_SESSION["admin_id"].'" ';
+	if (!$visitor->is_master_user()) {
+		$visitor->query .= ' WHERE visitor_table.visitor_enter_by = "' . $_SESSION["admin_id"] . '" ';
 	}
 }
 
@@ -45,8 +39,7 @@ $visitor->query .= 'ORDER BY visitor_table.visitor_id DESC';
 
 $result = $visitor->get_result();
 
-foreach($result as $row)
-{
+foreach ($result as $row) {
 	$data = array();
 	$data[] = $row["visitor_id"];
 	$data[] = $row["visitor_name"];

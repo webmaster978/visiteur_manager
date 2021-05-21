@@ -126,7 +126,8 @@ include('sidebar.php');
                             <label class="col-md-4 text-right">Heure d'arrivé</label>
                             <div class="col-md-8">
                                 <input id="timepicker" name="timepicker" width="276" />
-                                <input id="timepicker1" name="timepicker" width="276" />
+                                <!-- <input id="time" name="timepicker" width="276" /> -->
+
                                 <!-- <input type="text" name="timepicker" id="timepicker" class="form-control" required
                                     data-parsley-type="email" data-parsley-maxlength="150"
                                     data-parsley-trigger="keyup" /> -->
@@ -255,10 +256,11 @@ include('sidebar.php');
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <label class="col-md-4 text-right"><b>Observation du visiteur</b></label>
+                            <label class="col-md-4 text-right"><b>Heure de sortie</b></label>
                             <div class="col-md-8">
-                                <textarea name="visitor_outing_remark" id="visitor_outing_remark" class="form-control"
-                                    required data-parsley-maxlength="400" data-parsley-trigger="keyup"></textarea>
+                                <input id="visitor_outing_remark" name="visitor_outing_remark" width="276" />
+                                <!-- <textarea name="visitor_outing_remark" id="visitor_outing_remark" class="form-control"
+                                    required data-parsley-maxlength="400" data-parsley-trigger="keyup"></textarea> -->
                             </div>
                         </div>
                     </div>
@@ -278,6 +280,9 @@ include('sidebar.php');
 
 <script>
 $('#timepicker').timepicker({
+    uiLibrary: 'bootstrap4'
+});
+$('#visitor_outing_remark').timepicker({
     uiLibrary: 'bootstrap4'
 });
 </script>
@@ -461,11 +466,11 @@ $(document).ready(function() {
                 data: $(this).serialize(),
                 beforeSend: function() {
                     $('#detail_submit_button').attr('disabled', 'disabled');
-                    $('#detail_submit_button').val('wait...');
+                    $('#detail_submit_button').val('patientez...');
                 },
                 success: function(data) {
                     $('#detail_submit_button').attr('disabled', false);
-                    $('#detail_submit_button').val('Save');
+                    $('#detail_submit_button').val('Enregistrer');
                     $('#visitordetailModal').modal('hide');
                     $('#message').html(data);
                     $('#visitor_table').DataTable().destroy();

@@ -93,7 +93,7 @@ if (isset($_POST["action"])) {
 			$sub_array[] = html_entity_decode($row["visitor_meet_person_name"]);
 			$sub_array[] = $row["visitor_department"];
 			$sub_array[] = $row["timepicker"];
-			$sub_array[] = $row["visitor_out_time"];
+			$sub_array[] = $row["visitor_outing_remark"];
 			$status = '';
 			if ($row["visitor_status"] == 'In') {
 				$status = '<span class="badge badge-success">En cours</span>';

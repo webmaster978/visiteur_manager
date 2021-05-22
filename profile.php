@@ -155,6 +155,7 @@ include('sidebar.php');
                             aria-labelledby="pills-setting-tab">
                             <div class="card-body">
                                 <form method="post" id="user_form" enctype="multipart/form-data">
+
                                     <div class="form-group">
                                         <label for="example-name">Nom complet</label>
 

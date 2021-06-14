@@ -193,7 +193,7 @@ include('sidebar.php');
         <form method="post" id="visitor_details_form">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="modal_title">Details du visiteur</h4>
+                    <h4 style="text-align:center;" class="modal-title" id="modal_title">Details du visiteur</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -259,8 +259,7 @@ include('sidebar.php');
                             <label class="col-md-4 text-right"><b>Heure de sortie</b></label>
                             <div class="col-md-8">
                                 <input id="visitor_outing_remark" name="visitor_outing_remark" width="276" />
-                                <!-- <textarea name="visitor_outing_remark" id="visitor_outing_remark" class="form-control"
-                                    required data-parsley-maxlength="400" data-parsley-trigger="keyup"></textarea> -->
+
                             </div>
                         </div>
                     </div>
@@ -386,7 +385,7 @@ $(document).ready(function() {
                 $('#visitor_mobile_no').val(data.visitor_mobile_no);
                 $('#visitor_address').val(data.visitor_address);
                 $('#visitor_department').val(data.visitor_department);
-                document.querySelector('#ttt').style.display = 'none';
+                // document.querySelector('#ttt').style.display = 'none';
                 var person = $('#visitor_department').find(':selected').data('person');
                 var person_array = person.split(", ");
                 var html = '<option value="">Selectionner une personne</option>';

@@ -106,7 +106,7 @@ if (isset($_POST["action"])) {
 			}
 			$sub_array[] = '
 			<div align="center">
-			<button type="button" name="view_button" class="btn btn-primary btn-sm view_button" data-id="' . $row["visitor_id"] . '"><i class="fas fa-eye"></i></button>
+			<button type="button" name="view_button" class="btn btn-primary btn-sm view_button" data-id="' . $row["visitor_id"] . '"><i class="fa fa-level-up"></i></button>
 			&nbsp;
 			<button type="button" name="edit_button" class="btn btn-warning btn-sm edit_button" data-id="' . $row["visitor_id"] . '"><i class="fas fa-edit"></i></button>
 			&nbsp;
